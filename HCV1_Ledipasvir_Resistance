@@ -1,0 +1,191 @@
+{
+    "object_id": "https://portal.biochemistry.gwu.edu/BCO_DRAFT_a20987c5eade4fd883bc9765b47d3c75",
+    "spec_version": "IEEE",
+    "provenance_domain": {
+        "name": "HCV1 Ledipasvir Resistance Mutation Detection ",
+        "version": "1",
+        "created": "2021-09-22T09:30:00+17:30",
+        "modified": "",
+        "contributors": [
+            {
+                "name": "Gizachew Demessie",
+                "contribution": [
+                    "authoredBy"
+                ],
+                "affiliation": "GWU",
+                "email": "gdemessie12@gwu.edu",
+                "orcid": ""
+            }
+        ],
+        "license": "https://spdx.org/licenses/CC-BY-4.0.html"
+    },
+    "usability_domain": [
+        "To identify baseline single nucleotide polymorphisms (SNPs), (insertions), and (deletions) that correlate with reduced antiviral drug efficacy in Hepatitis C virus subtype 1."
+    ],
+    "description_domain": {
+        "keywords": [
+            "HCV1,  Ledipasvir, Antiviral resistance, SNP, amino acid substitutions,  insertion, deletion."
+        ],
+        "pipeline_steps": [
+            {
+                "step_number": -1,
+                "name": "HIVE-Hexagon",
+                "description": "Alignment of input data to the reference file.",
+                "input_list": [
+                    {
+                        "uri": {
+                            "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14778"
+                        }
+                    }
+                ],
+                "output_list": [
+                    {
+                        "uri": {
+                            "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14781"
+                        }
+                    }
+                ],
+                "version": "1"
+            },
+            {
+                "step_number": 0,
+                "name": "HIVE-Hexagon",
+                "description": "Variant calling",
+                "input_list": [
+                    {
+                        "uri": {
+                            "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14781"
+                        }
+                    }
+                ],
+                "output_list": [
+                    {
+                        "uri": {
+                            "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14782&filename=all_indels.dict"
+                        }
+                    }
+                ],
+                "version": "1"
+            }
+        ]
+    },
+    "execution_domain": {
+        "script": [
+            {
+                "uri": {
+                    "uri": ""
+                }
+            }
+        ],
+        "script_driver": "Shell",
+        "software_prerequisites": [
+            {
+                "name": "HIVE-Hexagon",
+                "version": "1",
+                "uri": {
+                    "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=login",
+                    "filename": "",
+                    "access_time": ""
+                }
+            },
+            {
+                "name": "HIVE-Heptagon",
+                "version": "1",
+                "uri": {
+                    "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=login",
+                    "filename": "",
+                    "access_time": ""
+                }
+            }
+        ],
+        "external_data_endpoints": [
+            {
+                "name": "HIVE",
+                "url": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=login"
+            }
+        ],
+        "environment_variables": {}
+    },
+    "io_domain": {
+        "input_subdomain": [
+            {
+                "uri": {
+                    "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14778",
+                    "filename": "Read file1",
+                    "access_time": "2021-09-22T09:30:00+17:30"
+                }
+            },
+            {
+                "uri": {
+                    "filename": "Reference file 2",
+                    "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14775",
+                    "access_time": "2021-09-22T09:30:00+17:30",
+                    "sha1_checksum": ""
+                }
+            },
+            {
+                "uri": {
+                    "filename": "Alignment file",
+                    "uri": "https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14781",
+                    "access_time": "2021-09-22T09:30:00+17:30",
+                    "sha1_checksum": ""
+                }
+            }
+        ],
+        "output_subdomain": [
+            {
+                "mediatype": "application/octet-stream",
+                "uri": {
+                    "uri": "URL https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14782&filename=all_indels.dict",
+                    "access_time": "2021-09-22T09:30:00+17:30",
+                    "filename": "all_indels.dict"
+                }
+            },
+            {
+                "mediatype": "text/csv",
+                "uri": {
+                    "filename": "FreqProfile.csv",
+                    "uri": "URL https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14782&filename=FreqProfile.csv",
+                    "access_time": "2021-09-22T09:30:00+17:30",
+                    "sha1_checksum": ""
+                }
+            },
+            {
+                "mediatype": "text/csv",
+                "uri": {
+                    "filename": "SNPprofile",
+                    "uri": "URL https://hive2.biochemistry.gwu.edu/dna.cgi?cmd=objFile&ids=14782&filename=SNPprofile.csv",
+                    "access_time": "2021-09-22T09:30:00+17:30",
+                    "sha1_checksum": ""
+                }
+            }
+        ]
+    },
+    "parametric_domain": [
+        {
+            "param": "minimum match length",
+            "value": "75",
+            "step": "1"
+        },
+        {
+            "step": "1",
+            "param": " allowable percent mismatches",
+            "value": "15"
+        },
+        {
+            "step": "2",
+            "param": "collapseRpts",
+            "value": "false"
+        },
+        {
+            "step": "2",
+            "param": "cutEnds",
+            "value": "do not cut"
+        },
+        {
+            "step": "2",
+            "param": "supportedDeletions",
+            "value": "true"
+        }
+    ]
+}
